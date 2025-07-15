@@ -1,0 +1,37 @@
+================================
+       ESP32 SYSTEM INFO
+================================
+Chip Model: ESP32-D0WD-V3
+Chip Revision: 300
+Number of cores: 2
+CPU Frequency: 240 MHz
+Flash Size: 4 MB
+Flash Speed: 80 MHz
+Flash Mode: QIO
+Total heap: 337460 bytes
+Free heap: 294332 bytes
+Total PSRAM: 0 bytes
+Free PSRAM: 0 bytes
+WiFi MAC: 00:00:00:00:00:00
+
+Features:
+  WiFi: YES
+  Bluetooth: YES
+  Bluetooth LE: YES
+ESP-IDF Version: v5.4.2-25-g858a988d6e
+Arduino ESP32 Version: 3.2.1
+Reset Reason: POWERON_RESET
+Internal Temperature: 50.6°C
+
+================================
+         SYSTEM READY
+================================
+
+--- Runtime Stats ---
+Uptime: 10 seconds
+Free Heap: 294068 bytes
+Min Free Heap: 288372 bytes
+Max Alloc Heap: 110580 bytes
+
+
+
