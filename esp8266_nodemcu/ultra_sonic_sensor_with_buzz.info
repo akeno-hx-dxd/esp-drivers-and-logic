@@ -1,0 +1,48 @@
+#define TRIG_PIN D2
+#define ECHO_PIN D3
+#define BUZZER_PIN D1
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
+  Serial.println("Ultrasonic sensor with buzzer ready!");
+}
+
+void loop() {
+  long distance = getDistance();
+  
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  
+  // Activate buzzer based on distance
+  if(distance > 0 && distance < 20) {  // Within 20cm
+    tone(BUZZER_PIN, 1000);  // High pitch
+    Serial.println("CLOSE - High beep");
+  } else if(distance >= 20 && distance < 50) {  // 20-50cm
+    tone(BUZZER_PIN, 500);   // Medium pitch
+    Serial.println("MEDIUM - Medium beep");
+  } else if(distance >= 50 && distance < 100) {  // 50-100cm
+    tone(BUZZER_PIN, 200);   // Low pitch
+    Serial.println("FAR - Low beep");
+  } else {
+    noTone(BUZZER_PIN);      // No sound
+  }
+  
+  delay(100);
+}
+
+long getDistance() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  
+  long duration = pulseIn(ECHO_PIN, HIGH);
+  long distance = duration * 0.034 / 2;  // Convert to cm
+  
+  return distance;
+}

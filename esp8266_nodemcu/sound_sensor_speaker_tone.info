@@ -1,0 +1,25 @@
+void setup() {
+  Serial.begin(115200);
+  pinMode(D1, OUTPUT);
+  Serial.println("Sound detection with audio tones...");
+}
+
+void loop() {
+  int micValue = analogRead(A0);
+  
+  Serial.print("Mic value: ");
+  Serial.println(micValue);
+  
+  if(micValue > 37) {
+    // Generate actual audio frequency
+    int frequency = map(micValue, 100, 1023, 440, 2000);  // 440Hz to 2000Hz
+    tone(D1, frequency, 200);  // Play tone for 200ms
+    Serial.print("SOUND DETECTED - Playing tone: ");
+    Serial.println(frequency);
+    delay(200);
+  } else {
+    noTone(D1);
+  }
+  
+  delay(50);
+}
